@@ -201,8 +201,8 @@ binary_sensor:
 external_components:
   - source:
       type: git
-      url: https://github.com/edwardtfn/TX-Ultimate-Easy
-      ref: v${version}
+      url: https://github.com/arnonh/TX-Ultimate-Easy
+      ref: main
     refresh: 1h
     components:
       - tx_ultimate_easy
