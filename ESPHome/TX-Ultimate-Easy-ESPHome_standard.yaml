@@ -14,7 +14,7 @@
 packages:
   # yamllint disable rule:colons
   core_hw_relays:    !include TX-Ultimate-Easy-ESPHome_standard_hw_relays.yaml
-  core_hw_speaker:   !include TX-Ultimate-Easy-ESPHome_standard_hw_speaker.yaml
+  #core_hw_speaker:   !include TX-Ultimate-Easy-ESPHome_standard_hw_speaker.yaml
   core_hw_vibration: !include TX-Ultimate-Easy-ESPHome_standard_hw_vibration.yaml
   # yamllint enable rule:colons
 
