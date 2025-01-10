@@ -134,10 +134,10 @@ light:
           name: "My Custom Effect"
           update_interval: 1ms
           lambda: |-
-              if (initial_run) {
-                  it.all() = ESPColor::BLACK;
-                  return;
-              }
+#              if (initial_run) {
+              it.all() = ESPColor::BLACK;
+#                  return;
+#              }
               for (int i = it.size() - 1; i > 0; i--) {
                   it[i] = it[i - 1].get();
               }
