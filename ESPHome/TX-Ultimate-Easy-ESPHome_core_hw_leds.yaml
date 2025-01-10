@@ -116,6 +116,7 @@ light:
           add_led_interval: 100ms
           reverse: false
       - addressable_color_wipe:
+      
           name: Color Wipe Effect With Custom Values Reverse
           colors:
             - red: 0%
@@ -129,6 +130,21 @@ light:
               num_leds: 1
           add_led_interval: 100ms
           reverse: True
+      - addressable_lambda:
+          name: "My Custom Effect"
+          update_interval: 1ms
+          lambda: |-
+              if (initial_run) {
+                  it.all() = ESPColor::BLACK;
+                  return;
+              }
+              for (int i = it.size() - 1; i > 0; i--) {
+                  it[i] = it[i - 1].get();
+              }
+              it[0] = current_color;
+
+
+
     segments:
       - id: light_full
         from: 0
