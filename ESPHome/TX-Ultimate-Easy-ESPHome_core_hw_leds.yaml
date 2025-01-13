@@ -131,18 +131,62 @@ light:
           add_led_interval: 100ms
           reverse: True
       - addressable_lambda:
-          name: "My Custom Effect"
-          update_interval: 1ms
+          name: "ColorScan"
+          update_interval: 50ms
           lambda: |-
-#              if (initial_run) {
-              it.all() = ESPColor::BLACK;
-#                  return;
-#              }
-              for (int i = it.size() - 1; i > 0; i--) {
-                  it[i] = it[i - 1].get();
+    
+            // it.size() - Number of LEDs
+            // it[num] - Access the LED at index num.
+    
+            // Set the LED at num to the given r, g, b values
+            // it[num] = Color(r, g, b);
+    
+            // Get the color at index num (Color instance)
+            // it[num].get();
+    
+            static uint16_t num1 = 0;
+            static uint16_t red = 255;
+            static uint16_t green = 3;
+            static uint16_t blue = 3;
+            static bool dir = false;
+            
+            uint16_t num = num1;
+            uint16_t numled = 71;
+    
+            if(red > 251 && blue < 4 && green < 252){
+              green+=5;
+    
+            } else if (red > 3 && green > 251 && blue < 4){
+              red-=5;
+    
+            } else if (red < 4 && green > 251 && blue < 252){
+              blue+=5;
+              
+            } else if (red < 4 && green > 3 && blue > 251){
+              green-=5;
+              
+            } else if (red < 252 && green < 4 && blue > 251){
+              red+=5;
+              
+            } else if (red > 251 && green < 4 && blue > 3){
+              blue-=5;
+              
+            }
+    
+            it[num] = Color(red, green, blue);
+            if(dir) {
+              if(num1 == numled){
+                dir = false;
+              } else{
+                num1++;
               }
-              it[0] = current_color;
-
+            } else  {
+              if(num1 == 0){
+                dir = true;
+              } else{
+                num1--;
+              }
+            }
 
 
     segments:
